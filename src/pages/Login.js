@@ -11,7 +11,7 @@ const Login = () => {
 
     const UserAuthenticated = async () => {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5000/api/auth/user', { withCredentials: true })
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/auth/user`, { withCredentials: true })
             .catch((err) => console.log('not authenticated'))
         if (response?.data) {
             setIsLoading(false)
@@ -30,7 +30,7 @@ const Login = () => {
     const redirectToGoogleAuth = () => {
         setIsDisabled(true);
         let timer;
-        const googleLoginURL = 'http://localhost:5000/api/auth/google';
+        const googleLoginURL = `${process.env.REACT_APP_API_ENDPOINT}/auth/google`;
         const newWindow = window.open(googleLoginURL, "_blank", "width=500,height=600");
         if (newWindow) {
             timer = setInterval(async () => {
