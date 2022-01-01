@@ -7,7 +7,7 @@ const Logout = () => {
     const { authUser, setIsLoading } = useAuthContext()
     const logoutUserr = () => {
         setIsLoading(true);
-        axios.get('http://localhost:5000/api/logout', { withCredentials: true }).then(
+        axios.get(`${process.env.REACT_APP_API_ENDPOINT}/logout`, { withCredentials: true }).then(
             () => {
                 authUser(false);
                 setIsLoading(false);
